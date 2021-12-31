@@ -5,7 +5,7 @@ const CoinRow = ({ coin, index }) => {
         <tr key={index}>
             <td>{index}</td>
             <td>
-                <img src={coin.image} alt={coin.image} style={{ width: '5%' }} className="img-fluid me-4" />
+                <img src={coin.image} alt={coin.image} className="img-fluid me-4 img-crypto" />
                 <span>
                     {coin.name}
                 </span>
