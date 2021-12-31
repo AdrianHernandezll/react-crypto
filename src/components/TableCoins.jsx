@@ -1,29 +1,30 @@
-import React from 'react';
-import CoinRow from './CoinRow';
+import React from "react";
+import CoinRow from "./CoinRow";
 
-const titles = ['#', 'Coin', 'Price', 'Price Change', '24h Volume'];
+const titles = ["#", "Coin", "Price", "Price Change", "24h Volume"];
 
-const TableCoins = ({ coins }) => {
+const TableCoins = ({ coins, search }) => {
+    const filterCoins =
+        coins.filter((coin) =>
+            coin.name.toLowerCase().includes(search.toLowerCase())
+        ) || symbols.toLowerCase().includes(search.toLowerCase());
 
     return (
-
         <table className="table table-dark mt-4 table-hover">
-            <thead >
+            <thead>
                 <tr>
-                    {
-                        titles.map(title => (
-                            <td>{title}</td>
-                        ))
-                    }
+                    {titles.map((title) => (
+                        <td>{title}</td>
+                    ))}
                 </tr>
             </thead>
             <tbody>
-                {coins.map((coin, index) => (
+                {filterCoins.map((coin, index) => (
                     <CoinRow coin={coin} key={index} index={index + 1} />
                 ))}
             </tbody>
         </table>
-    )
-}
+    );
+};
 
-export default TableCoins
+export default TableCoins;
